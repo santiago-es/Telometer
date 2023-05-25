@@ -1,5 +1,5 @@
 # telomap-ont
-A simple regular expression based method for measuring telomere length from noise Oxford Nanopore Technology reads
+A simple regular expression based method for measuring telomere length from noisy Oxford Nanopore Technology reads
 
 
 Dependencies: pysam, regex, csv, argparse
