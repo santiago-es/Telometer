@@ -4,8 +4,10 @@ A simple regular expression based method for measuring telomere length from nois
 
 Dependencies: pysam, regex, csv, argparse
 
-Simple Usage: python3 telomap-ont.py -b /path/to/sorted.bam -o /path/to/output.tsv
-
+Simple Usage: 
+```
+python3 telomap-ont.py -b /path/to/sorted.bam -o /path/to/output.tsv
+```
 FASTQ reads should be aligned to the T2T-CHM13-2.0 genome with minimap2 or winnowmap.
 
 The logic of this script is based on telomap for PacBio (see: https://github.com/cytham/telomap/) and [CY Tham et al Nat Comms 2023](https://www-nature-com.laneproxy.stanford.edu/articles/s41467-023-35823-7#Sec1)
