@@ -14,3 +14,5 @@ Namely, it looks for telomeric repeats using regular expression itertools and me
 Because ONT reads are noisy and frequently miscall telomeres (see [Tan et al Gen. Bio. 2022](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-022-02751-6)) in stereotypical modes, my script also counts these frequently miscalled motifs as telomeric repeats.
 
 Additionally, my script only searches reads which align to the first or last 15,000 bp of their reference chromosome and only measures telomeres from reads longer than 5kb to ensure any analyzed read would be sufficiently long to contain likely intact telomres. It then checks that the first or last 100 bp of a read are telomere-rich to ensure telomere measurements are from terminal and not interstitial telomere sequences.
+
+If this script is helpful please cite our github, DOI and article citation TBA. 
