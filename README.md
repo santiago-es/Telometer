@@ -2,7 +2,7 @@
 A simple regular expression based method for measuring telomere length from noisy Oxford Nanopore Technology reads
 
 
-Dependencies: pysam, regex, csv, argparse
+Dependencies: pysam, regex, pandas
 
 Simple Usage: 
 ```
