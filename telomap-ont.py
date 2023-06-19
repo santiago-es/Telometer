@@ -3,8 +3,7 @@ import re
 import csv
 import argparse
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
+
 
 def reverse_complement(seq):
     complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A', 'N': 'N'}
