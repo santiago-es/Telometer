@@ -1,6 +1,6 @@
 # Telometer
 
-![Telometer Logo](https://i.imgur.com/40wjlzO.png)
+![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
 v0.5
 A simple regular expression based method for measuring telomere length from long read sequencing
