@@ -1,5 +1,7 @@
 # Telometer
 
+![Telometer Logo](https://i.imgur.com/40wjlzO.png)
+
 v0.5
 A simple regular expression based method for measuring telomere length from long read sequencing
 
@@ -12,7 +14,15 @@ python3 telometer.py -b /path/to/sorted.bam -o /path/to/output.tsv
 
 # Workflow
 
-FASTQ reads should be aligned to the T2T-CHM13-2.0 genome with minimap2 or winnowmap. This repository contains a useful reference (t2t-and-subtel.fa) which combines the hs1 (CHM13 v2.0) assembly with alternative subtelomere assemblies ([Stong 2014](https://pubmed.ncbi.nlm.nih.gov/24676094/)). 
+Download the hs1 assembly from https://github.com/marbl/CHM13 (chm13v2.0.fa)
+
+Append [Stong 2014](https://pubmed.ncbi.nlm.nih.gov/24676094/) subtelomere assemblies and index:
+```
+cat chm13v2.0.fa stong_subtels.fa > t2t-and-subtel.fa
+samtools faidx t2t-and-subtel.fa
+```
+
+FASTQ reads should be aligned to the T2T-CHM13-2.0 genome with minimap2 or winnowmap.   
 
 ```
 minimap2 -ax map-ont \
