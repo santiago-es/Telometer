@@ -52,4 +52,6 @@ Because ONT reads are noisy and frequently miscall telomeres (see [Tan et al Gen
 
 Additionally, my script only searches reads which align to the first or last several thousand base pairs of their reference chromosome and only measures telomeres from reads longer than 1000 bp to ensure any analyzed read would be sufficiently long to contain likely intact telomres. It then checks that the first or last 100 bp of a read are telomere-rich to ensure telomere measurements are from terminal and not interstitial telomere sequences.
 
+By default, telometer only considers reads with read length greater than 1000 bp. For whole genome sequencing, this should be raised to at least 3000 bp.
+
 If this script is helpful please cite the original article, once it is published. 
