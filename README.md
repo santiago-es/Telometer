@@ -51,9 +51,8 @@ To save space, it is recommended to delete the initial sam and unsorted bam outp
 Run Telometer
 
 ```
-python3 telometer.py -b /path/to/output-sort.bam -o /path/to/output.tsv
+telometer -b /path/to/output-sort.bam -o /path/to/output.tsv -m [minimum read length to consider, default 1000] -c [chemistry (r9 or r10), default r9]
 ```
-
 
 Telometer looks for telomeric repeats using regular expressions and measures telomeres from the sequencing adapter sequence to the last telomeric repeat of the form 5'-TTAGGG-3' or 5'-AATCCC-3'.
 Because ONT reads are noisy and frequently miscall telomeres (see [Tan et al Gen. Bio. 2022](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-022-02751-6)) in stereotypical modes, Telometer also counts these frequently miscalled motifs as telomeric repeats. That said, since this code was created improved telomere basecalling has been integrated into the default R10 chemistry dorado basecalling model and R10 high accuracy basecalling with dorado is now the recommended sequencing chemistry and basecalling model for telomere measurement. 
