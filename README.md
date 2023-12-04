@@ -63,7 +63,7 @@ By default, telometer only considers reads with read length greater than 1000 bp
 
 A benchtop protocol for performing telomere captre library preparation in simplex or multiplex, please see TelometerLibraryPrep.docx in this repo. 
 
-If this script is helpful please cite the original article:
+If this code or library prep method is helpful, please cite the original article:
 
 Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing distinguishes healthy aging from disease. _bioRxiv_ 2023. 
 
