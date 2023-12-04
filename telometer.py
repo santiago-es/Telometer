@@ -1,7 +1,7 @@
-# Telometer v0.5
+#!/usr/bin/env python3
+# Telometer v0.51
 # Created by: Santiago E Sanchez
 # Artandi Lab, Stanford University, 2023
-# MIT Open License
 # Measures telomeres from ONT or PacBio long reads aligned to a T2T genome assembly
 # Simple Usage: python telometer.py -b sorted_t2t.bam -o output.tsv
 
@@ -15,10 +15,18 @@ def reverse_complement(seq):
     complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A', 'N': 'N'}
     return "".join(complement[base] for base in reversed(seq))
 
-def calculate_telomere_length(bam_file_path, output_file_path, chemistry):
-    bam_file = pysam.AlignmentFile(bam_file_path, "rb")
+def calculate_telomere_length():
+    # required inputs: bam_file_path, output_file_path, chemistry
+    parser = argparse.ArgumentParser(description='Calculate telomere length from a BAM file.')
+    parser.add_argument('-b', '--bam', help='The path to the sorted BAM file.', required=True)
+    parser.add_argument('-o', '--output', help='The path to the output file.', required=True)
+    parser.add_argument('-c', '--chemistry', default="r9", help="Sequencing chemistry (r9 or r10). Optional", required=False)
+    parser.add_argument('-m', '--minreadlen', default=1000, help='Minimum read length to consider (Default: 1000). Optional', required=False)
+    args = parser.parse_args()
+    bam_file = pysam.AlignmentFile(args.bam, "rb")
 
-    if chemistry == 'r10':
+
+    if args.chemistry == 'r10':
         adapters = ['TTTTTTTTCCTGTACTTCGTTCAGTTACGTATTGCT', 'GCAATACGTAACTGAACGAAGTACAGG']
         adapters_rc = [reverse_complement(adapt) for adapt in adapters]
     else:
@@ -54,7 +62,7 @@ def calculate_telomere_length(bam_file_path, output_file_path, chemistry):
         if read.is_unmapped:
             continue
         reference_genome_length = bam_file.get_reference_length(read.reference_name)
-        if "M" in read.reference_name or len(seq) < 1000:
+        if "M" in read.reference_name or len(seq) < args.minreadlen:
             continue
         if read.is_reverse:
             rev_count += 1
@@ -118,24 +126,18 @@ def calculate_telomere_length(bam_file_path, output_file_path, chemistry):
     bam_file.close()
 
     # Write the results to the output file
-    with open(output_file_path, 'w', newline='') as output_file:
+    with open(args.output, 'w') as output_file:
+    # with open(output_file_path, 'w', newline='') as output_file:
         writer = csv.DictWriter(output_file, fieldnames=results[0].keys(), delimiter='\t')
         writer.writeheader()
         writer.writerows(results)
 
-    print("p arm seen "+str(p_count))
-    print("q arm seen "+str(q_count))
-    print("fwd "+str(fwd_count))
-    print("rev "+str(rev_count))
-    print("p tel "+ str(p_tel))
-    print("q tel "+str(q_tel))
+    #print("p arm seen "+str(p_count))
+    #print("q arm seen "+str(q_count))
+    #print("fwd "+str(fwd_count))
+    #print("rev "+str(rev_count))
+    #print("p tel "+ str(p_tel))
+    #print("q tel "+str(q_tel))
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Calculate telomere length from a BAM file.')
-    parser.add_argument('-b', '--bam', help='The path to the sorted BAM file.', required=True)
-    parser.add_argument('-o', '--output', help='The path to the output file.', required=True)
-    parser.add_argument('-c', '--chemistry', default="r9", help="Sequencing chemistry (r9 or r10).", required=False)
-
-    args = parser.parse_args()
-
-    calculate_telomere_length(args.bam, args.output, args.chemistry)
+    calculate_telomere_length()
