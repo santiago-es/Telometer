@@ -9,6 +9,7 @@ Dependencies: pysam, pandas
 
 Simple Usage: 
 ```
+conda install -c bioconda telometer
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
