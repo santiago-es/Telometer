@@ -5,7 +5,7 @@
 v0.5
 A simple regular expression based method for measuring telomere length from long read sequencing
 
-Dependencies: pysam, regex, pandas
+Dependencies: pysam, pandas
 
 Simple Usage: 
 ```
