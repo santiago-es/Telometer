@@ -65,7 +65,7 @@ A benchtop protocol for performing telomere captre library preparation in simple
 
 If this code or library prep method is helpful, please cite the original article:
 
-Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing distinguishes healthy aging from disease. _bioRxiv_ 2023. 
+**Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing distinguishes healthy aging from disease. _bioRxiv_ 2023. **
 
 [Preprint at https://doi.org/10.1101/2023.11.29.569263](https://www.biorxiv.org/content/10.1101/2023.11.29.569263v1)
 
