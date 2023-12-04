@@ -20,7 +20,7 @@ Additionally, my script only searches reads which align to the first or last sev
 
 By default, telometer only considers reads with read length greater than 1000 bp and this minimum is recommended for telomere capture libraries. For whole genome sequencing, this should be raised to at least 3000 bp.
 
-A benchtop protocol for performing telomere captre library preparation in simplex or multiplex, please see TelometerLibraryPrep.docx in this repo. 
+For a benchtop protocol for performing telomere captre library preparation in simplex or multiplex, please see TelometerLibraryPrep.docx in this repo. 
 
 If this code or library prep method is helpful, please cite the original article:
 
