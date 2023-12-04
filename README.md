@@ -45,6 +45,9 @@ samtools view -bho output.bam output.sam
 samtools sort -o output-sort.bam output.bam
 samtools index output-sort.bam
 ```
+
+To save space, it is recommended to delete the initial sam and unsorted bam outputs and compress sorted bams. 
+
 Run Telometer
 
 ```
