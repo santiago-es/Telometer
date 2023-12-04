@@ -9,10 +9,15 @@ Dependencies: pysam, regex, pandas
 
 Simple Usage: 
 ```
-python3 telometer.py -b /path/to/sorted.bam -o /path/to/output.tsv
+telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 
 # Workflow
+
+Install telometer
+```
+conda install -c bioconda telometer
+```
 
 Download the hs1 assembly from https://github.com/marbl/CHM13 (chm13v2.0.fa)
 
