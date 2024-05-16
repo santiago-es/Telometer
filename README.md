@@ -37,21 +37,19 @@ Install telometer
 conda install -c bioconda telometer
 ```
 
-Download the hs1 assembly from https://github.com/marbl/CHM13 (chm13v2.0.fa)
+Download the latest human t2t assembly from https://github.com/marbl/CHM13 (chm13v2.0.fa)
 
-Append [Stong 2014](https://pubmed.ncbi.nlm.nih.gov/24676094/) subtelomere assemblies and index:
+Append [Stong 2014](https://pubmed.ncbi.nlm.nih.gov/24676094/) subtelomere assemblies and index (stong_subtels.fa provided with source):
 ```
 cat chm13v2.0.fa stong_subtels.fa > t2t-and-subtel.fa
 samtools faidx t2t-and-subtel.fa
 ```
 
-FASTQ reads should be aligned to the T2T-CHM13-2.0 genome with minimap2 or winnowmap.   
+FASTQ reads should be aligned to the Stong+T2T-CHM13-2.0 genome with minimap2 or winnowmap.   
 
 ```
 minimap2 -ax map-ont \
- -t 16 \ 
--N 5 \ -Y 
--L \ 
+ -t [Max # of Threads for Your Machine] \ 
 /path/to/reference/t2t-and-subtel.fa \
 /path/to/fastq_dir/*.fastq  \
 -o output.sam
@@ -69,8 +67,17 @@ To save space, it is recommended to delete the initial sam and unsorted bam outp
 Run Telometer
 
 ```
-telometer -b /path/to/output-sort.bam -o /path/to/output.tsv -m [minimum read length to consider, default 1000] -c [chemistry (r9 or r10), default r9]
+telometer -b /path/to/output-sort.bam -o /path/to/output.tsv -m [minimum read length to consider, default 1000 for telomere capture experiments, use 4000 for WGS] -c [chemistry (r9 or r10), default r10]
 ```
+Minimal test data subsampled from a telomere capture experiment is included with source. To test:
 
+```
+telometer -b minimal_tels.bam -o output.tsv 
+```
+The minimal dataset should produce 1013 measurements with the following summary statistics: 
+```
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    395    2337    3218    3391    4111   22939 
+```
 
 
