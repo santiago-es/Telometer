@@ -91,8 +91,8 @@ telometer -b minimal_tels.bam -o output.tsv
 ```
 The minimal dataset should produce measurements with the following summary statistics: 
 ```
-    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-     10    1861    2630    2813    3498   22878 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    168    1866    2691    2893    3572   22878 
 ```
 
 
