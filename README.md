@@ -2,7 +2,7 @@
 
 ![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
-v0.74
+v0.75
 A simple regular expression based method for measuring telomere length from long read sequencing
 
 Dependencies: pysam, pandas
@@ -49,7 +49,7 @@ Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing disti
 
 Install telometer
 ```
-conda install -c bioconda telometer
+pip install telometer==0.75
 ```
 
 Download the latest human t2t assembly from https://github.com/marbl/CHM13 (chm13v2.0.fa)
