@@ -2,14 +2,14 @@
 
 ![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
-v0.5
+v0.74
 A simple regular expression based method for measuring telomere length from long read sequencing
 
 Dependencies: pysam, pandas
 
 Simple Usage: 
 ```
-conda install -c bioconda telometer
+pip install telometer==0.74
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
@@ -21,6 +21,8 @@ Additionally, Telometer only searches reads which align to the first or last sev
 
 By default, telometer only considers reads with read length greater than 1000 bp and this minimum is recommended for telomere capture libraries. For whole genome sequencing, this should be raised to 4000 bp.
 
+The sub/telomeric boundary in humans tends to contain stretches of highly variable length which consist of canonical telomere motifs with one mismatch. Occasionally, these stretches are internal to a longer stretch of canonical telomere motifs. The latest version of telometer both accounts for internal stretches of variants with 1 bp mismatch and outputs an additional column 'subtel_boundary_length' which contains the length of the 1 bp mismatch telomere variant region at the subtelomere boundary for that read. Adding telomere_length to subtel_boundary_length is equivalent to using other long-read telomere measurement methods which use a signal processing approach to determine the subtelomeric boundary and are therefore significantly more tolerant of one bp mismatches. 
+
 For a benchtop protocol for performing telomere capture library preparation in simplex or multiplex, please see TelometerLibraryPrep.docx in this repo. 
 
 If this code or library prep method is helpful, please cite the original article:
@@ -29,6 +31,19 @@ Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing disti
 
 [Preprint at https://doi.org/10.1101/2023.11.29.569263](https://www.biorxiv.org/content/10.1101/2023.11.29.569263v1)
 
+# Output Structure
+
+| Column   | Description |
+| -------- | ------- |
+| chromosome | Identity of Aligned Contig for Read (As listed in reference)    |
+| reference_start / *_end | Start and End of Alignment in Reference     |
+| telomere_length    | Telomere Length    |
+| subtel_boundary_length| Length of subtelomeric boundary (Stretch of telomere-like motifs with 1 mismatch commonly observed at sub/telomere boundary) |
+| read_id| read_id assigned by sequencer |
+| read_length | read length |
+| mapping_quality| MAPQ score given by minimap2 |
+| arm | p or q chromosome arm |
+| direction| forward (fwd) or reverse (rev) read orientation |
 
 # Workflow
 
@@ -45,7 +60,7 @@ cat chm13v2.0.fa stong_subtels.fa > t2t-and-subtel.fa
 samtools faidx t2t-and-subtel.fa
 ```
 
-FASTQ reads should be aligned to the Stong+T2T-CHM13-2.0 genome with minimap2 or winnowmap.   
+FASTQ reads should be aligned to the Stong+T2T-CHM13-2.0 genome with minimap2.   
 
 ```
 minimap2 -ax map-ont \
@@ -74,10 +89,10 @@ Minimal test data subsampled from a telomere capture experiment is included with
 ```
 telometer -b minimal_tels.bam -o output.tsv 
 ```
-The minimal dataset should produce 1013 measurements with the following summary statistics: 
+The minimal dataset should produce measurements with the following summary statistics: 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    395    2337    3218    3391    4111   22939 
+    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+     10    1861    2630    2813    3498   22878 
 ```
 
 
