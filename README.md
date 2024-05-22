@@ -9,7 +9,7 @@ Dependencies: pysam, pandas
 
 Simple Usage: 
 ```
-pip install telometer==0.74
+pip install telometer==0.75
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
