@@ -9,7 +9,7 @@ Dependencies: pysam, pandas, regex, samtools, minimap2 (and their associated dep
 
 Simple Usage: 
 ```
-pip install telometer==0.75
+pip install telometer==0.76
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
