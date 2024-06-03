@@ -2,14 +2,14 @@
 
 ![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
-v0.79
+v0.80
 A simple regular expression based method for measuring telomere length from long read sequencing
 
 Dependencies: pysam, pandas, regex, samtools, minimap2 (and their associated dependencies)
 
 Simple Usage: 
 ```
-pip install telometer==0.79
+pip install telometer==0.80
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
