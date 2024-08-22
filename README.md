@@ -21,7 +21,7 @@ Additionally, Telometer only searches reads which align to the first or last sev
 
 By default, telometer only considers reads with read length greater than 1000 bp and this minimum is recommended for telomere capture libraries. For whole genome sequencing, this should be raised to 4000 bp.
 
-The sub/telomeric boundary in humans tends to contain stretches of highly variable length which consist of canonical telomere motifs with one mismatch (see [Stephens and Kocher, 2024](https://link.springer.com/article/10.1186/s12859-024-05807-5)). Occasionally, these stretches are internal to a longer stretch of canonical telomere motifs. The latest version of telometer accounts for internal stretches of variants with 1 bp mismatch and counts them within the telomere length, but this may change as we learn more about telomere measurement by long read sequenicng. 
+The sub/telomeric boundary in humans tends to contain stretches of highly variable length which consist of canonical telomere motifs with one mismatch (see [Stephens and Kocher, 2024](https://link.springer.com/article/10.1186/s12859-024-05807-5)). Occasionally, these stretches are internal to a longer stretch of canonical telomere motifs. The latest version of telometer accounts for internal stretches of variants with 1 bp mismatch and counts them within the telomere length, but this may change as we learn more about telomere measurement by long read sequencing. 
 
 For a benchtop protocol for performing telomere capture library preparation in simplex or multiplex, please see TelometerLibraryPrep.docx in this repo. 
 
