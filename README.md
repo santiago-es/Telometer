@@ -2,14 +2,14 @@
 
 ![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
-v0.81
+v0.95
 A simple regular expression based method for measuring telomere length from long read sequencing
 
 Dependencies: pysam, pandas, regex, samtools, minimap2 (and their associated dependencies)
 
 Simple Usage: 
 ```
-pip install telometer==0.81
+pip install telometer==0.95
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
@@ -38,7 +38,6 @@ Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing disti
 | chromosome | Identity of Aligned Contig for Read (As listed in reference)    |
 | reference_start / *_end | Start and End of Alignment in Reference     |
 | telomere_length    | Telomere Length    |
-| subtel_boundary_length| Length of subtelomeric boundary (Stretch of telomere-like motifs with 1 mismatch commonly observed at sub/telomere boundary) |
 | read_id| read_id assigned by sequencer |
 | read_length | read length |
 | mapping_quality| MAPQ score given by minimap2 |
@@ -49,7 +48,7 @@ Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing disti
 
 Install telometer
 ```
-pip install telometer==0.75
+pip install telometer==0.95
 ```
 
 Download the latest human t2t assembly from https://github.com/marbl/CHM13 (chm13v2.0.fa)
@@ -82,7 +81,7 @@ To save space, it is recommended to delete the initial sam and unsorted bam outp
 Run Telometer
 
 ```
-telometer -b /path/to/output-sort.bam -o /path/to/output.tsv -m [minimum read length to consider, default 1000 for telomere capture experiments, use 4000 for WGS] -c [chemistry (r9 or r10), default r10]
+telometer -b /path/to/output-sort.bam -o /path/to/output.tsv -m [minimum read length to consider, default 1000 for telomere capture experiments, use 4000 for WGS] -g [maximum non-telomeric gap tolerated within telomere sequence, default 100]
 ```
 Minimal test data subsampled from a telomere capture experiment is included with source. To test:
 
@@ -92,7 +91,7 @@ telometer -b minimal_tels.bam -o output.tsv
 The minimal dataset should produce measurements with the following summary statistics: 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    168    1866    2691    2893    3572   22878 
+    195    2168   3260    3365    4388  21520 
 ```
 
 
