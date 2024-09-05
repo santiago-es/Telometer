@@ -2,14 +2,14 @@
 
 ![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
-v0.95
+v1.0
 A simple regular expression based method for measuring telomere length from long read sequencing
 
 Dependencies: pysam, pandas, regex, samtools, minimap2 (and their associated dependencies)
 
 Simple Usage: 
 ```
-pip install telometer==0.95
+pip install telometer==1.0
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
@@ -88,10 +88,30 @@ Minimal test data subsampled from a telomere capture experiment is included with
 ```
 telometer -b minimal_tels.bam -o output.tsv 
 ```
-The minimal dataset should produce measurements with the following summary statistics: 
+The minimal dataset should produce measurements with the following summary statistics using telometer default settings: 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    195    2168   3260    3365    4388  21520 
+    215    2786    3848    3991    4762   34284 
 ```
+
+Other options: 
+
++----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+| Argument       | Short Flag                                 | Type        | Description                                                 |
++----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+| --bam          | -b                                         | String      | The path to the sorted BAM file (required).                  |
++----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+| --output       | -o                                         | String      | The path to the output file (required).                      |
++----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+| --minreadlen   | -m                                         | Integer     | Minimum read length to consider (optional).                  |
+|                |                                            |             | Default: 1000 for telomere capture, use 4000 for WGS.        |
++----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+| --maxgaplen    | -g                                         | Integer     | Maximum allowed "gap" of non-canonical or 1bp mismatch       |
+|                |                                            |             | sequence within telomere region (optional). Default: 250.    |
++----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+| --threads      | -t                                         | Integer     | Number of processing threads to use (optional).              |
+|                |                                            |             | Default: Uses all available CPU threads.                     |
++----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+
 
 
