@@ -96,22 +96,13 @@ The minimal dataset should produce measurements with the following summary stati
 
 Other options: 
 
-+----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
-| Argument       | Short Flag                                 | Type        | Description                                                 |
-+----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
-| --bam          | -b                                         | String      | The path to the sorted BAM file (required).                  |
-+----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
-| --output       | -o                                         | String      | The path to the output file (required).                      |
-+----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
-| --minreadlen   | -m                                         | Integer     | Minimum read length to consider (optional).                  |
-|                |                                            |             | Default: 1000 for telomere capture, use 4000 for WGS.        |
-+----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
-| --maxgaplen    | -g                                         | Integer     | Maximum allowed "gap" of non-canonical or 1bp mismatch       |
-|                |                                            |             | sequence within telomere region (optional). Default: 250.    |
-+----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
-| --threads      | -t                                         | Integer     | Number of processing threads to use (optional).              |
-|                |                                            |             | Default: Uses all available CPU threads.                     |
-+----------------+--------------------------------------------+-------------+-------------------------------------------------------------+
+| Argument      | Short Flag | Type    | Description                                                                                  |
+| ------------- | ---------- | ------- | -------------------------------------------------------------------------------------------- |
+| `--bam`       | `-b`       | String  | The path to the sorted BAM file (required).                                                   |
+| `--output`    | `-o`       | String  | The path to the output file (required).                                                       |
+| `--minreadlen`| `-m`       | Integer | Minimum read length to consider (optional). Default: 1000 for telomere capture, use 4000 for WGS. |
+| `--maxgaplen` | `-g`       | Integer | Maximum allowed "gap" of non-canonical or 1bp mismatch sequence within telomere region (optional). Default: 250. |
+| `--threads`   | `-t`       | Integer | Number of processing threads to use (optional). Default: Uses all available CPU threads.       |
 
 
 
