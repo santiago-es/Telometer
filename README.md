@@ -2,14 +2,14 @@
 
 ![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
-v1.0
+v1.1
 A simple regular expression based method for measuring telomere length from long read sequencing
 
 Dependencies: pysam, pandas, regex, samtools, minimap2, scipy (and their associated dependencies)
 
 Simple Usage: 
 ```
-pip install telometer==1.0
+pip install telometer==1.1
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
@@ -91,7 +91,7 @@ telometer -b minimal_tels.bam -o output.tsv
 The minimal dataset should produce measurements with the following summary statistics using telometer default settings: 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    215    2786    3848    3991    4762   34284
+    583    2714    3767    3861    4711   20233
 ```
 
 Other options: 
@@ -103,16 +103,9 @@ Other options:
 | `--minreadlen`| `-m`       | Integer | Minimum read length to consider (optional). Default: 1000 for telomere capture, use 4000 for WGS. |
 | `--maxgaplen` | `-g`       | Integer | Maximum allowed "gap" of non-canonical or 1bp mismatch sequence within telomere region (optional). Default: 250. |
 | `--threads`   | `-t`       | Integer | Number of processing threads to use (optional). Default: Uses all available CPU threads.       |
+| `--memlimit`   | `-l`       | Integer | Maximum RAM allocation per read batch (optional). Default: 8 Gb     |
 
-# Notes on Interpreting Results 
 
-Keep in mind that telomere measurement by long-read sequencing is a new method, and we're learning new things every day. That said, here are a few tips from measuring many of them:
-
-1. The minima and maxima of the distribution are noisy, focus on the summary statistics.
-2. To assess the whole distribution, I would advise looking at the fraction of telomeres within certain length boundaries.
-3. Technical variation across flow cells is minimal and samples run on different flow cells can be compared.
-4. At least 100 and ideally >200 telomeres per sample should be used to assess the bulk telomere length distribution.
-5. For chromosome-specific measurements, this same principle applies _per chromosome arm_.
 
 
 
