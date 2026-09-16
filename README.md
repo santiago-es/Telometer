@@ -2,14 +2,14 @@
 
 ![Telometer Logo](https://i.imgur.com/te0QfrR.png)
 
-v1.1
-A simple regular expression based method for measuring telomere length from long read sequencing
+v2.0
+Quantitative single-molecule telomere measurement from nanopore long-reads.
 
 Dependencies: pysam, pandas, regex, samtools, minimap2, scipy (and their associated dependencies)
 
 Simple Usage: 
 ```
-pip install telometer==1.1
+pip install telometer==2.0
 telometer -b /path/to/sorted.bam -o /path/to/output.tsv
 ```
 # Description
@@ -29,7 +29,15 @@ If this code or library prep method is helpful, please cite the original article
 
 [Sanchez, S. E. et al. Digital telomere measurement by long-read sequencing distinguishes healthy aging from disease. _Nature Communications_ 2024](https://www.nature.com/articles/s41467-024-49007-4)
 
+# 2.0 Updates
 
+1. Improved telomere boundary detection, Small number of artefactual 12 bp terminal telomere repeats on non-telomere ends which are not representative of true shortest measured telomere lengths should no longer appear in the output.
+
+2. Performance improvements reduce memory usage by 50% and improve runtime by 100%
+
+3. Added the -e or --enrichment tag which adds a "telomere_per_gb" column to the output to better understand per-sample telomere enrichment. Use only when using telometer from bam files which have not been subsetted from the original sequencing experiment.
+
+4. Added the --variant-motif function which accepts a 6 character string which will be interpreted as a possible variant telomere motif to be counted as valid telomere repeats. Useful for experiments or samples containing mutant telomerase templates which produce mutant telomere repeats or for quantifying the abundance of specific variants in telomere regions. Additional citation for this functionality coming soon. 
 
 # Output Structure
 
