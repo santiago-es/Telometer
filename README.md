@@ -56,7 +56,7 @@ If this code or library prep method is helpful, please cite the original article
 
 Install telometer
 ```
-pip install telometer==0.95
+pip install telometer
 ```
 
 Download the latest human t2t assembly from https://github.com/marbl/CHM13 (chm13v2.0.fa)
